@@ -5,7 +5,9 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
     templateUrl: "./products-header.component.html",
 })
 export class ProductsHeaderComponent implements OnInit {
-    @Output() changeLayout = new EventEmitter<number>();
+    @Output() layoutChange = new EventEmitter<number>();
+    @Output() itemsCountChange = new EventEmitter<number>();
+    @Output() sortChange = new EventEmitter<string>();
 
     sort = "desc";
     itemsShowCount = 12;
@@ -16,13 +18,15 @@ export class ProductsHeaderComponent implements OnInit {
 
     onSortOrderChange(newSort: string): void {
         this.sort = newSort;
+        this.sortChange.emit(newSort);
     }
 
     onItemsCountShownChange(newCount: number): void {
         this.itemsShowCount = newCount;
+        this.itemsCountChange.emit(newCount);
     }
 
     onLayoutChange(colsNum: number): void {
-        this.changeLayout.emit(colsNum);
+        this.layoutChange.emit(colsNum);
     }
 }

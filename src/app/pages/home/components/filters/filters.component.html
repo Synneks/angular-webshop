@@ -5,7 +5,7 @@
     <mat-selection-list [multiple]="false">
         <mat-list-option *ngFor="let category of categories" [value]="category"
             ><button (click)="onSelectCategory(category)">
-                {{ category }}
+                {{ category | titlecase }}
             </button></mat-list-option
         >
     </mat-selection-list>
